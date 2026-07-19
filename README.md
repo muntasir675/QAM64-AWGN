@@ -7,7 +7,7 @@ Sections:
 - **BER curve**: Monte Carlo simulation from 0–20 dB with theoretical overlay
 - **16QAM comparison**: BER vs 64QAM with power-efficiency delta at target BER
 
-Also includes `QAM64_interactive.m` — a constellation viewer with an Eb/N0 slider.
+Also includes `QAM64_interactive.m` a constellation viewer with an Eb/N0 slider.
 
 ## Files
 
