@@ -1,5 +1,5 @@
-%Bonus stage 1 part 2 slider code:
-function qam64_constellation_live()
+% 64QAM interactive constellation viewer (run via QAM64_interactive)
+function QAM64_interactive()
     % Build a fixed 64QAM constellation (Gray 8-PAM per axis)
     Number_symbols = 5e4; k = 6;
     levels8  = [-7 -5 -3 -1 1 3 5 7];
