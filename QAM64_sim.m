@@ -105,9 +105,9 @@ end
 %% Stage 2: 64QAM Receiver and BER Curve (with theory overlay)
 
 % -----------------------------
-% Parameters as per assignment
+% Simulation parameters
 % -----------------------------
-Number_symbols = 2e5;                 % Increase for final report if needed
+Number_symbols = 2e5;     
 k              = 6;                    % bits/symbol for 64QAM
 Number_bits    = k*Number_symbols;
 EbN0_range     = 0:20;                 % in dB
@@ -183,8 +183,8 @@ for idx = 1:numel(EbN0_range)
     r = s + w;
 
     % RX: nearest-level slicing per axis
-[~,idxI] = min(abs(real(r) - levels8), [], 2);
-[~,idxQ] = min(abs(imag(r) - levels8), [], 2);
+    [~,idxI] = min(abs(real(r) - levels8), [], 2);
+    [~,idxQ] = min(abs(imag(r) - levels8), [], 2);
 
     gIh = idxI-1; gQh = idxQ-1;
     bIh = invGray8(gIh+1).'; bQh = invGray8(gQh+1).';
@@ -234,7 +234,7 @@ rng default;
 
 EbN0_range = 0:20;                 % dB
 Ns_bns     = 2e5;                  % symbols per SNR for bonus (adjust as needed)
-targetBER  = 1e-3;                 % set the report's target BER here
+targetBER  = 1e-3;                 % Target BER for comparison
 
 % ---- 16QAM definitions ----
 levels4   = [-3 -1 1 3];           % 4-PAM levels per axis
@@ -273,8 +273,8 @@ for ii = 1:numel(EbN0_range)
     bIh = invGray4(gIh+1).'; bQh = invGray4(gQh+1).';
 
     % binary index -> 2 bits (MSB..LSB)
-    recI = [floor(bIh/2), mod(bIh,1*2)];       % [MSB, LSB]
-    recQ = [floor(bQh/2), mod(bQh,1*2)];
+    recI = [floor(bIh/2), mod(bIh,2)];       % [MSB, LSB]
+    recQ = [floor(bQh/2), mod(bQh,2)];
     rx_bits = reshape([recI recQ].', [], 1);
 
     BER16(ii) = mean(rx_bits ~= bits);
